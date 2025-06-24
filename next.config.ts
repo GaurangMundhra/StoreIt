@@ -10,7 +10,14 @@ const nextConfig: NextConfig = {
   experimental: {
     serverActions: {
       bodySizeLimit: "100MB",
+      allowedOrigins: [
+        'localhost:3000',
+        '*.app.github.dev', // Allow GitHub Codespaces domains
+        '*.githubpreview.dev', // Alternative GitHub Codespaces domain
+        'https://reimagined-disco-q7qj66p65j5r3ww5-3000.app.github.dev/'
+      ]
     },
+    
   },
   images: {
     remotePatterns: [

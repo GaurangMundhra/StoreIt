@@ -1,0 +1,15 @@
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
+  "eslint.alwaysShowStatus": true,
+  "css.validate": false, // Disable default CSS validation to avoid Tailwind errors
+  "files.associations": {
+    "*.css": "tailwindcss" // Associate .css files with Tailwind for IntelliSense
+  },
+  "editor.quickSuggestions": {
+    "strings": true // Enable suggestions in string literals (e.g., className)
+  },
+  "tailwindCSS.emmetCompletions": true // Optional: Enable Emmet for Tailwind
+}
