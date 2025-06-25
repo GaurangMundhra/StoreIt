@@ -68,8 +68,8 @@ const OtpModal = ({accountId, email}: {accountId: string; email: string}) => {
                             className="otp-close-button" 
                         />
                     </AlertDialogTitle>
-                    <AlertDialogDescription className="subtitle-2 text-light-100 text-center">
-                        We&apos;ve sent the code to <span className="text-brand pl-1">{email}</span>
+                    <AlertDialogDescription className="subtitle-2 text-center text-light-100">
+                        We&apos;ve sent the code to <span className="pl-1 text-brand">{email}</span>
                     </AlertDialogDescription>
                 </AlertDialogHeader>
 
@@ -108,7 +108,7 @@ const OtpModal = ({accountId, email}: {accountId: string; email: string}) => {
                             <Button 
                                 type="button" 
                                 variant="link" 
-                                className="text-brand pl-1" 
+                                className="pl-1 text-brand" 
                                 onClick={handleResendOtp}
                             >
                                 Click to resend
