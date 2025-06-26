@@ -33,7 +33,7 @@ export const calculatePercentage = (sizeInBytes: number) => {
 export const getFileType = (fileName: string) => {
   const extension = fileName.split(".").pop()?.toLowerCase();
 
-  if (!extension) return { type: "other", extension: "" };
+  if (!extension) return { type: "others", extension: "" };
 
   const documentExtensions = [
     "pdf",
@@ -68,11 +68,11 @@ export const getFileType = (fileName: string) => {
 
   if (documentExtensions.includes(extension))
     return { type: "document", extension };
-  if (imageExtensions.includes(extension)) return { type: "image", extension };
+  if (imageExtensions.includes(extension)) return { type: "images", extension };
   if (videoExtensions.includes(extension)) return { type: "video", extension };
   if (audioExtensions.includes(extension)) return { type: "audio", extension };
 
-  return { type: "other", extension };
+  return { type: "others", extension };
 };
 
 export const formatDateTime = (isoString: string | null | undefined) => {
