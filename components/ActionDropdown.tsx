@@ -1,4 +1,4 @@
-"use client";
+'use client'
 
 import {
   Dialog,
@@ -6,6 +6,7 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
+  DialogDescription, // Add this import
 } from "@/components/ui/dialog";
 import {
   DropdownMenu,
@@ -46,7 +47,7 @@ const ActionDropdown = ({ file }: { file: Models.Document }) => {
     setIsDropdownOpen(false);
     setAction(null);
     setName(file.name);
-    //   setEmails([]);
+    // setEmails([]);
   };
 
   const handleAction = async () => {
@@ -87,12 +88,23 @@ const ActionDropdown = ({ file }: { file: Models.Document }) => {
 
     const { value, label } = action;
 
+    // Define description based on action type
+    const descriptionText = {
+      rename: "Rename the selected file.",
+      share: "Share the file with other users by entering their email addresses.",
+      delete: `Confirm deletion of the file "${file.name}".`,
+      details: `View details of the file "${file.name}".`,
+    }[value];
+
     return (
       <DialogContent className="shad-dialog button">
         <DialogHeader className="flex flex-col gap-3">
           <DialogTitle className="text-center text-light-100">
             {label}
           </DialogTitle>
+          <DialogDescription className="sr-only">
+            {descriptionText}
+          </DialogDescription>
           {value === "rename" && (
             <Input
               type="text"
@@ -140,68 +152,67 @@ const ActionDropdown = ({ file }: { file: Models.Document }) => {
 
   return (
     <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-      <DropdownMenu open={isDropdownOpen} onOpenChange={setIsDropdownOpen}>
-        <DropdownMenuTrigger className="shad-no-focus">
-          <Image
-            src="/assets/icons/dots.svg"
-            alt="dots"
-            width={34}
-            height={34}
-          />
-        </DropdownMenuTrigger>
-        <DropdownMenuContent>
-          <DropdownMenuLabel className="max-w-[200px] truncate">
-            {file.name}
-          </DropdownMenuLabel>
-          <DropdownMenuSeparator />
-          {actionsDropdownItems.map((actionItem) => (
-            <DropdownMenuItem
-              key={actionItem.value}
-              className="shad-dropdown-item"
-              onClick={() => {
-                setAction(actionItem);
-
-                if (
-                  ["rename", "share", "delete", "details"].includes(
-                    actionItem.value,
-                  )
-                ) {
-                  setIsModalOpen(true);
-                }
-              }}
-            >
-              {actionItem.value === "download" ? (
-                <Link
-                  href={constructDownloadUrl(file.bucketFileId)}
-                  download={file.name}
-                  className="flex items-center gap-2"
-                >
-                  <Image
-                    src={actionItem.icon}
-                    alt={actionItem.label}
-                    width={30}
-                    height={30}
-                  />
-                  {actionItem.label}
-                </Link>
-              ) : (
-                <div className="flex items-center gap-2">
-                  <Image
-                    src={actionItem.icon}
-                    alt={actionItem.label}
-                    width={30}
-                    height={30}
-                  />
-                  {actionItem.label}
-                </div>
-              )}
-            </DropdownMenuItem>
-          ))}
-        </DropdownMenuContent>
-      </DropdownMenu>
+<DropdownMenu open={isDropdownOpen} onOpenChange={setIsDropdownOpen}>
+  <DropdownMenuTrigger className="shad-no-focus">
+    <Image
+      src="/assets/icons/dots.svg"
+      alt="dots"
+      width={34}
+      height={34}
+    />
+  </DropdownMenuTrigger>
+  <DropdownMenuContent>
+    <DropdownMenuLabel className="max-w-[200px] truncate">
+      {file.name}
+    </DropdownMenuLabel>
+    <DropdownMenuSeparator />
+    {actionsDropdownItems.map((actionItem) => (
+      <DropdownMenuItem
+        key={actionItem.value}
+        className="shad-dropdown-item"
+        onSelect={() => {
+          setAction(actionItem);
+          setIsDropdownOpen(false); // Close DropdownMenu
+          if (
+            ["rename", "share", "delete", "details"].includes(actionItem.value)
+          ) {
+            setIsModalOpen(true); // Open Dialog
+          }
+        }}
+      >
+        {actionItem.value === "download" ? (
+          <Link
+            href={constructDownloadUrl(file.bucketFileId)}
+            download={file.name}
+            className="flex items-center gap-2"
+          >
+            <Image
+              src={actionItem.icon}
+              alt={actionItem.label}
+              width={30}
+              height={30}
+            />
+            {actionItem.label}
+          </Link>
+        ) : (
+          <div className="flex items-center gap-2">
+            <Image
+              src={actionItem.icon}
+              alt={actionItem.label}
+              width={30}
+              height={30}
+            />
+            {actionItem.label}
+          </div>
+        )}
+      </DropdownMenuItem>
+    ))}
+  </DropdownMenuContent>
+</DropdownMenu>
 
       {renderDialogContent()}
     </Dialog>
   );
 };
+
 export default ActionDropdown;

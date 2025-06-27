@@ -1,3 +1,5 @@
+'use server'
+
 import { ID, Models, Query } from "node-appwrite";
 import { createAdminClient } from "../appwrite";
 import { appwriteConfig } from "../appwrite/config";
@@ -44,17 +46,19 @@ export const uploadFile = async ({ file, ownerId, accountId, path }: UploadFileP
   }
 };
 
-const createQueries = (currentUser: Models.Document) => {
+const createQueries = (currentUser: Models.Document, types: string[] = []) => {
   const queries = [
     Query.or([
       Query.equal("owner", [currentUser.$id]),
       Query.contains("users", [currentUser.email]),
     ]),
   ];
+
+  if (types.length > 0) queries.push(Query.equal("type", types));
   return queries;
 };
 
-export const getFiles = async () => {
+export const getFiles = async ({ types = [] }: GetFilesProps) => {
   const { databases } = await createAdminClient();
 
   try {
@@ -62,9 +66,13 @@ export const getFiles = async () => {
 
     if (!currentUser) throw new Error("User not found");
 
-    const queries = createQueries(currentUser);
+    const queries = createQueries(currentUser, types);
 
-    const files = await databases.listDocuments(appwriteConfig.databaseId, appwriteConfig.filesCollectionId, queries);
+    const files = await databases.listDocuments(
+      appwriteConfig.databaseId,
+      appwriteConfig.filesCollectionId,
+      queries
+    );
     return parseStringify(files);
   } catch (error) {
     handleError(error, "Failed to get Files");
@@ -76,9 +84,14 @@ export const renameFile = async ({ fileId, name, extension, path }: RenameFilePr
 
   try {
     const newName = `${name}.${extension}`;
-    const updatedFile = await databases.updateDocument(appwriteConfig.databaseId, appwriteConfig.filesCollectionId, fileId, {
-      name: newName,
-    });
+    const updatedFile = await databases.updateDocument(
+      appwriteConfig.databaseId,
+      appwriteConfig.filesCollectionId,
+      fileId,
+      {
+        name: newName,
+      }
+    );
 
     revalidatePath(path);
     return parseStringify(updatedFile);
@@ -91,9 +104,14 @@ export const updateFileUsers = async ({ fileId, emails, path }: UpdateFileUsersP
   const { databases } = await createAdminClient();
 
   try {
-    const updatedFile = await databases.updateDocument(appwriteConfig.databaseId, appwriteConfig.filesCollectionId, fileId, {
-      users: emails,
-    });
+    const updatedFile = await databases.updateDocument(
+      appwriteConfig.databaseId,
+      appwriteConfig.filesCollectionId,
+      fileId,
+      {
+        users: emails,
+      }
+    );
 
     revalidatePath(path);
     return parseStringify(updatedFile);
@@ -106,7 +124,11 @@ export const deleteFile = async ({ fileId, bucketFileId, path }: DeleteFileProps
   const { databases, storage } = await createAdminClient();
 
   try {
-    const deletedFile = await databases.deleteDocument(appwriteConfig.databaseId, appwriteConfig.filesCollectionId, fileId);
+    const deletedFile = await databases.deleteDocument(
+      appwriteConfig.databaseId,
+      appwriteConfig.filesCollectionId,
+      fileId
+    );
 
     if (deletedFile) {
       await storage.deleteFile(appwriteConfig.bucketId, bucketFileId);
