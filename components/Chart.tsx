@@ -29,27 +29,37 @@ const chartConfig = {
 } satisfies ChartConfig;
 
 export const Chart = ({ used = 0 }: { used: number }) => {
-  const chartData = [{ storage: "used", 10: used, fill: "white" }];
+  const percentage = Number(calculatePercentage(used));
+  const chartData = [
+    {
+      name: "Used",
+      used: percentage,
+      fill: "#f87171", // red arc
+    },
+  ];
 
   return (
-    <Card className="chart">
+    <Card className="chart text-red-800 bg-[#fecaca]">
       <CardContent className="flex-1 p-0">
         <ChartContainer config={chartConfig} className="chart-container">
           <RadialBarChart
             data={chartData}
             startAngle={90}
-            endAngle={Number(calculatePercentage(used)) + 90}
+            endAngle={450}
             innerRadius={80}
-            outerRadius={110}
+            outerRadius={100}
           >
             <PolarGrid
               gridType="circle"
               radialLines={false}
               stroke="none"
-              className="polar-grid"
               polarRadius={[86, 74]}
             />
-            <RadialBar dataKey="storage" background cornerRadius={10} />
+            <RadialBar
+  dataKey="used"
+  background={{ fill: "#e5e7eb" }}
+  cornerRadius={10}
+/>
             <PolarRadiusAxis tick={false} tickLine={false} axisLine={false}>
               <Label
                 content={({ viewBox }) => {
@@ -66,17 +76,12 @@ export const Chart = ({ used = 0 }: { used: number }) => {
                           y={viewBox.cy}
                           className="chart-total-percentage"
                         >
-                          {used && calculatePercentage(used)
-                            ? calculatePercentage(used)
-                                .toString()
-                                .replace(/^0+/, "")
-                            : "0"}
-                          %
+                          {percentage}%
                         </tspan>
                         <tspan
                           x={viewBox.cx}
                           y={(viewBox.cy || 0) + 24}
-                          className="fill-white/70"
+                          className="fill-red-700 text-sm"
                         >
                           Space used
                         </tspan>

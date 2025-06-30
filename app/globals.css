@@ -286,8 +286,9 @@
 
   /* Chart */
   .chart {
-    @apply flex items-center rounded-[20px] bg-primary p-5 text-primary-foreground md:flex-col xl:flex-row;
-  }
+  @apply flex items-center rounded-[20px] bg-[#ea6b6b] text-primary-foreground p-5 md:flex-col xl:flex-row;
+}
+
   .chart-container {
     @apply mx-auto aspect-square w-[180px] text-primary-foreground xl:w-[250px];
   }
