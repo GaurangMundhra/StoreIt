@@ -38,8 +38,6 @@
 4. 🤸 [Quick Start](#quick-start)  
 5. 🔗 [Assets](#assets)  
 6. 🛠️ [Contributing](#contributing)  
-7. 🙋‍♂️ [Connect with Me](#connect)  
-8. 📄 [License](#license)
 
 ---
 
