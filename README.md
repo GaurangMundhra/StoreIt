@@ -142,22 +142,6 @@ If you find a bug or have suggestions, feel free to open an [Issue](https://gith
 
 ---
 
-## 🙋‍♂️ Connect with Me
-
-Let's connect and grow together!
-
-* 💼 [LinkedIn](https://www.linkedin.com/in/gaurangmundhra/)
-* 🐦 [Twitter / X](https://twitter.com/gaurangmundhra)
-* 📫 Email: [gaurangmundhra@gmail.com](mailto:gaurangmundhra@gmail.com)
-* 🌐 [Portfolio Website](https://gaurangmundhra.dev) <!-- Update if you have one -->
-
----
-
-## 📄 License
-
-This project is licensed under the [MIT License](LICENSE).
-
----
 
 > Don't forget to ⭐️ this repo if you found it useful!
 
