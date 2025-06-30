@@ -163,13 +163,3 @@ This project is licensed under the [MIT License](LICENSE).
 
 ```
 
----
-
-Let me know if you'd like a section for:
-- **Demo Video**
-- **Screenshots**
-- **Deployment on Vercel**
-- **FAQs**
-
-Happy to extend it further!
-```
