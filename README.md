@@ -1,3 +1,16 @@
+Absolutely! Here's an extended version of your `README.md` that includes:
+
+* GitHub profile follow link
+* Contribution instructions
+* Social and contact links
+* License section
+* Clean markdown formatting throughout
+
+You can copy-paste this directly into your `README.md` file:
+
+---
+
+````md
 <div align="center">
   <br />
   <a href="https://youtu.be/lie0cr3wESQ" target="_blank">
@@ -13,6 +26,18 @@
   </div>
 
   <h3 align="center">StoreIt - File Storage and Sharing Platform</h3>
+  <p align="center">🚀 Upload, organize, manage & share your files like never before</p>
+
+  <br />
+
+  <a href="https://github.com/GaurangMundhra/StoreIt">
+    <img alt="GitHub repo stars" src="https://img.shields.io/github/stars/GaurangMundhra/StoreIt?style=social">
+  </a>
+  &nbsp;&nbsp;
+  <a href="https://github.com/GaurangMundhra">
+    <img alt="Follow Gaurang Mundhra on GitHub" src="https://img.shields.io/github/followers/GaurangMundhra?label=Follow&style=social">
+  </a>
+
 </div>
 
 ---
@@ -24,38 +49,39 @@
 3. 🔋 [Features](#features)  
 4. 🤸 [Quick Start](#quick-start)  
 5. 🔗 [Assets](#assets)  
-6. 🚀 [More](#more)
+6. 🛠️ [Contributing](#contributing)  
+7. 🙋‍♂️ [Connect with Me](#connect)  
+8. 📄 [License](#license)
 
 ---
 
 ## 🤖 Introduction
 
-**StoreIt** is a file storage and sharing platform that allows users to upload, organize, manage, and share files seamlessly. Built using Next.js 15 and Appwrite SDK, it supports modern features, performance, and scalability.
+**StoreIt** is a modern file storage and sharing platform built using the latest tech stack. It lets users upload, manage, organize, and share files with an intuitive interface and secure backend.
 
 ---
 
 ## ⚙️ Tech Stack
 
-- React 19  
-- Next.js 15  
-- Appwrite  
-- TailwindCSS  
-- ShadCN  
-- TypeScript  
+- ✅ React 19  
+- ✅ Next.js 15  
+- ✅ Tailwind CSS  
+- ✅ TypeScript  
+- ✅ ShadCN UI  
+- ✅ Appwrite Cloud SDK  
 
 ---
 
 ## 🔋 Features
 
-- ✅ **User Authentication (Signup/Login/Logout)** with Appwrite  
-- ✅ **Upload Files** – Documents, images, videos, audio  
-- ✅ **Preview, Rename & Delete** uploaded files  
-- ✅ **Download** files directly from the platform  
-- ✅ **File Sharing** via shareable links  
-- ✅ **Dashboard Overview** – Storage stats, recent uploads  
-- ✅ **Global Search** across user files  
-- ✅ **Sorting Options** – Sort by name, date, size  
-- ✅ **Fully Responsive UI** with a clean, modern look  
+- 🔐 **User Authentication** (Sign up, Login, Logout)
+- 📁 **Upload Files** (Images, PDFs, Videos, Audio, etc.)
+- 🔄 **Rename / Delete / View / Download**
+- 📤 **Shareable File Links**
+- 📊 **Dashboard with Usage Stats**
+- 🔎 **Global Search**
+- 🗃️ **Sorting by Name, Size, Date**
+- 📱 **Mobile-Responsive Design**
 
 ---
 
@@ -63,30 +89,26 @@
 
 ### Prerequisites
 
-Make sure you have:
-
-- [Git](https://git-scm.com/)  
-- [Node.js](https://nodejs.org/en)  
-- [npm](https://www.npmjs.com/)  
+- [Git](https://git-scm.com/)
+- [Node.js](https://nodejs.org/)
+- [npm](https://www.npmjs.com/)
 
 ### Clone the Repository
 
 ```bash
 git clone https://github.com/GaurangMundhra/StoreIt.git
 cd StoreIt
-```
+````
 
-**Installation**
-
-Install the project dependencies using npm:
+### Install Dependencies
 
 ```bash
 npm install
 ```
 
-**Set Up Environment Variables**
+### Setup `.env.local`
 
-Create a new file named `.env.local` in the root of your project and add the following content:
+Create a `.env.local` file and add your Appwrite project credentials:
 
 ```env
 NEXT_PUBLIC_APPWRITE_ENDPOINT="https://cloud.appwrite.io/v1"
@@ -98,21 +120,68 @@ NEXT_PUBLIC_APPWRITE_BUCKET=""
 NEXT_APPWRITE_KEY=""
 ```
 
-Replace the values with your actual Appwrite credentials. You can obtain these credentials by signing up &
-creating a new project on the [Appwrite website](https://appwrite.io/).
-
-**Running the Project**
+### Start Development Server
 
 ```bash
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser to view the project.
+Now open [http://localhost:3000](http://localhost:3000)
 
-## <a name="links">🔗 Assets</a>
+---
 
-- Assets used in the project can be found [here](https://jsm.dev/gdrive-kit)
+## 🔗 Assets
+
+* All assets and visual resources used: [GDrive Kit](https://jsm.dev/gdrive-kit)
 
 <a href="https://jsm.dev/gdrive-kit">
   <img src="public/readme/videokit.png" alt="Video Kit Banner">
 </a>
+
+---
+
+## 🛠️ Contributing
+
+Contributions are welcome and appreciated! 🎉
+
+1. Fork the repository
+2. Create a new branch (`git checkout -b feature/your-feature-name`)
+3. Make your changes and commit (`git commit -m 'Add your message'`)
+4. Push to the branch (`git push origin feature/your-feature-name`)
+5. Open a **Pull Request**
+
+If you find a bug or have suggestions, feel free to open an [Issue](https://github.com/GaurangMundhra/StoreIt/issues).
+
+---
+
+## 🙋‍♂️ Connect with Me
+
+Let's connect and grow together!
+
+* 💼 [LinkedIn](https://www.linkedin.com/in/gaurangmundhra/)
+* 🐦 [Twitter / X](https://twitter.com/gaurangmundhra)
+* 📫 Email: [gaurangmundhra@gmail.com](mailto:gaurangmundhra@gmail.com)
+* 🌐 [Portfolio Website](https://gaurangmundhra.dev) <!-- Update if you have one -->
+
+---
+
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+> Don't forget to ⭐️ this repo if you found it useful!
+
+```
+
+---
+
+Let me know if you'd like a section for:
+- **Demo Video**
+- **Screenshots**
+- **Deployment on Vercel**
+- **FAQs**
+
+Happy to extend it further!
+```
