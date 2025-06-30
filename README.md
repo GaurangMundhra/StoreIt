@@ -1,16 +1,4 @@
-Absolutely! Here's an extended version of your `README.md` that includes:
 
-* GitHub profile follow link
-* Contribution instructions
-* Social and contact links
-* License section
-* Clean markdown formatting throughout
-
-You can copy-paste this directly into your `README.md` file:
-
----
-
-````md
 <div align="center">
   <br />
   <a href="https://youtu.be/lie0cr3wESQ" target="_blank">
